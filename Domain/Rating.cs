@@ -1,3 +1,16 @@
 namespace BookRecommendationsSystem.Domain;
 
-public record Rating();
+public record Rating
+{
+    public int Isbn { get; init; }
+    public int RatingVal { get; init; }
+
+    public Rating(int isbn, int ratingVal)
+    {
+        if (ratingVal < 1 || ratingVal > 5)
+            throw new ArgumentOutOfRangeException(nameof(ratingVal), "Rating must be between 1 and 5.");
+
+        Isbn = isbn;
+        RatingVal = ratingVal;
+    }
+}
