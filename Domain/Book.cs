@@ -7,7 +7,7 @@ public class Book
     public int Isbn
     {
         get => _isbn;
-        internal set => _isbn = value;
+        private set => _isbn = value;
     }
 
     public string Author { get; }
