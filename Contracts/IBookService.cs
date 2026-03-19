@@ -5,27 +5,55 @@ namespace BookRecommendationsSystem.Contracts;
 public interface IBookService
 {
     /// <summary>
-    /// 
+    /// A method available to the user to add a book
     /// </summary>
-    /// <param name="book"></param>
-    void AddBook(Book book);
+    /// <param name="author">The author of the book to add</param>
+    /// <param name="title">The title of the book to add</param>
+    /// <param name="year">The year of the book to add</param>
+    void AddBook(string author, string title, string year);
     
     /// <summary>
-    /// 
+    /// A method available to the user to update a book
     /// </summary>
-    /// <param name="book"></param>
-    void UpdateBook(Book book);
+    /// <param name="isbn">The isbn of the book to update</param>
+    /// <param name="author">The author of the book to update</param>
+    /// <param name="title">The title of the book to update</param>
+    /// <param name="year">The year of the book to update</param>
+    /// <exception cref="ArgumentException">Thrown when the isbn does not match an existing book</exception>
+    /// <remarks>
+    /// Pre-conditions:
+    /// - An book must already exist with the provided isbn
+    ///
+    /// Post-conditions:
+    /// - The book with the provided isbn is replaced with a new book object
+    /// </remarks>
+    void UpdateBook(int isbn, string author, string title, string year);
 
     /// <summary>
-    /// 
+    /// A method available to the user to delete a book
     /// </summary>
-    /// <param name="isbn"></param>
+    /// <param name="isbn">The isbn of the book to delete</param>
+    /// <exception cref="ArgumentException">Thrown when the isbn does not match an existing book</exception>
+    /// <remarks>
+    /// Pre-conditions:
+    /// - An book must already exist with the provided isbn
+    ///
+    /// Post-conditions:
+    /// - The book with the provided isbn is deleted
+    /// </remarks>
     void DeleteBook(int isbn);
     
     /// <summary>
-    /// 
+    /// A method available to the user to retrieve a book
     /// </summary>
     /// <param name="isbn"></param>
-    /// <returns></returns>
+    /// <returns>The isbn of the book to retrieve</returns>
+    /// <remarks>
+    /// Pre-conditions:
+    /// - An book must already exist with the provided isbn
+    ///
+    /// Post-conditions:
+    /// - The book with the provided isbn is returned
+    /// </remarks>
     Book GetBook(int isbn);
 }

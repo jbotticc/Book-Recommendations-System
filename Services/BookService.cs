@@ -5,12 +5,12 @@ namespace BookRecommendationsSystem.Services;
 
 public class BookService : IBookService
 {
-    public void AddBook(Book book)
+    public void AddBook(string author, string title, string year)
     {
         throw new NotImplementedException();
     }
 
-    public void UpdateBook(Book book)
+    public void UpdateBook(int isbn, string author, string title, string year)
     {
         throw new NotImplementedException();
     }

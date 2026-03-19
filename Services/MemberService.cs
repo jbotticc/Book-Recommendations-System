@@ -5,12 +5,12 @@ namespace BookRecommendationsSystem.Services;
 
 public class MemberService : IMemberService
 {
-    public void AddMember(Member member)
+    public void AddMember(string name)
     {
         throw new NotImplementedException();
     }
 
-    public void UpdateMember(Member member)
+    public void UpdateMember(int account, string name)
     {
         throw new NotImplementedException();
     }
