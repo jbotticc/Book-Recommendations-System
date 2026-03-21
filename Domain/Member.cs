@@ -3,8 +3,7 @@ namespace BookRecommendationsSystem.Domain;
 public class Member
 {
     private string _name;
-    private int _account;
-    
+
     public string Name
     {
         get => _name;
@@ -16,23 +15,16 @@ public class Member
         }
     }
 
-    public int Account
-    {
-        get => _account;
-        private set => _account = value;
-    }
-
-    public Member(string name)
+    public int Account { get; }
+    
+    public Member(string name, int account)
     {
         Name = name;
-    }
-
-    internal void SetName(string name)
-    {
-        Name = name;
-    }
-    internal void SetAccount(int account)
-    {
         Account = account;
+    }
+
+    public void SetName(string name)
+    {
+        Name = name;
     }
 }
