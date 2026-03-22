@@ -12,11 +12,6 @@ public class BookRepo : IBookRepo
     {
         return _nextIsbn++;
     }
-
-    public int GetIsbn()
-    {
-        return _nextIsbn;
-    }
     
     public void Add(Book book)
     {
