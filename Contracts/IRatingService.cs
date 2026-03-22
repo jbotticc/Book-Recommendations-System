@@ -5,6 +5,13 @@ namespace BookRecommendationsSystem.Contracts;
 public interface IRatingService
 {
     /// <summary>
+    /// Adds a new rating object to a users list of ratings
+    /// </summary>
+    /// <param name="account">The account id of the user who is getting a rating added</param>
+    /// <exception cref="ArgumentException">Thrown when the account does not match an existing member</exception>
+    void AddRating(int account);
+    
+    /// <summary>
     /// A method available to the user to update a rating for a book
     /// </summary>
     /// <param name="isbn">The isbn of the book to be rated</param>

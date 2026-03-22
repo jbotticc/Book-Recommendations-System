@@ -5,7 +5,6 @@ namespace BookRecommendationsSystem.Repositories;
 
 public class RatingRepo : IRatingRepo
 {
-    
     public void Add(Rating rating)
     {
         throw new NotImplementedException();

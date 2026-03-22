@@ -5,6 +5,11 @@ namespace BookRecommendationsSystem.Services;
 
 public class RatingService : IRatingService
 {
+    public void AddRating(int account)
+    {
+        throw new NotImplementedException();
+    }
+    
     public void UpdateRating(int isbn, int rating)
     {
         throw new NotImplementedException();
