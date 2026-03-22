@@ -15,7 +15,12 @@ public class RatingService : IRatingService
         throw new NotImplementedException();
     }
 
-    public List<Rating> ViewRatings()
+    public List<Rating> GetRatingsById(int account)
+    {
+        throw new NotImplementedException();
+    }
+
+    public List<Rating> GetLoggedInUsersRatings()
     {
         throw new NotImplementedException();
     }

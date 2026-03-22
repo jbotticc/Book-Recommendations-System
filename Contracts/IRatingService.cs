@@ -29,10 +29,18 @@ public interface IRatingService
     void DeleteRating(int isbn);
     
     /// <summary>
-    /// A method available to the user to display all of their ratings
+    /// A method available to the user to display ratings given an account id
     /// </summary>
     /// <returns>
     /// A list of rating objects
     /// </returns>
-    List<Rating> ViewRatings();
+    List<Rating> GetRatingsById(int account);
+    
+    /// <summary>
+    /// A method available to the user to display their ratings
+    /// </summary>
+    /// <returns>
+    /// A list of rating objects
+    /// </returns>
+    List<Rating> GetLoggedInUsersRatings();
 }

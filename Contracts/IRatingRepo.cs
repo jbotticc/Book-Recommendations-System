@@ -25,8 +25,10 @@ public interface IRatingRepo
     /// <summary>
     /// Internal repository method that the services uses to display all ratings for the logged in user
     /// </summary>
+    /// <param name="account">The account id of the member whose ratings to retrieve</param>
+    /// <exception cref="ArgumentException">Thrown if account does not match an existing member</exception>
     /// <returns>
     /// A list of rating objects
     /// </returns>
-    List<Rating> Get();
+    List<Rating> Get(int account);
 }
