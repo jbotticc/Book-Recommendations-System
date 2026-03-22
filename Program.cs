@@ -139,7 +139,7 @@ class Program
                             break;
                         }
                         var book = bookService.GetBook(isbn);
-                        Console.WriteLine("Your new rating for " + book.Isbn + ", " + book.Author + ", " + book.Title + ", " + book.Year + " => rating:" + rating);
+                        Console.WriteLine("Your new rating for " + book.Isbn + ", " + book.Author + ", " + book.Title + ", " + book.Year + " => rating: " + rating);
                         break;
                     case "4":
                         var member = memberService.GetMember(account);
@@ -147,8 +147,8 @@ class Program
                         var ratings = ratingService.GetLoggedInUsersRatings();
                         for (int i = 0; i < ratings.Count; i++)
                         {
-                            var book = bookService.GetBook(ratings[i].Isbn);
-                            Console.WriteLine(book.Isbn + ", " + book.Author + ", " + book.Title + ", " + book.Year + " => rating: " + ratings[i].RatingVal);
+                            var ratedBook = bookService.GetBook(ratings[i].Isbn);
+                            Console.WriteLine(ratedBook.Isbn + ", " + ratedBook.Author + ", " + ratedBook.Title + ", " + ratedBook.Year + " => rating: " + ratings[i].RatingVal);
                         }
                         break;
                     case "5":
