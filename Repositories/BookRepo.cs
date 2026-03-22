@@ -5,23 +5,35 @@ namespace BookRecommendationsSystem.Repositories;
 
 public class BookRepo : IBookRepo
 {
+    private readonly Dictionary<int, Book> _books = new();
+    private int _nextIsbn = 1;
+
+    public int GetNextIsbn()
+    {
+        return _nextIsbn++;
+    }
+    
     public void Add(Book book)
     {
-        throw new NotImplementedException();
+        _books.Add(book.Isbn, book);
     }
 
     public void Update(Book book)
     {
-        throw new NotImplementedException();
+        _books[book.Isbn] = book;
     }
 
     public void Delete(int isbn)
     {
-        throw new NotImplementedException();
+        _books.Remove(isbn);
     }
 
     public Book Get(int isbn)
     {
-        throw new NotImplementedException();
+        if (!_books.TryGetValue(isbn, out var book))
+        {
+            throw new KeyNotFoundException($"Book with ISBN {isbn} not found");
+        }
+        return book;
     }
 }

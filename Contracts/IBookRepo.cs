@@ -5,6 +5,14 @@ namespace BookRecommendationsSystem.Contracts;
 public interface IBookRepo
 {
     /// <summary>
+    /// A method to return the next available ISBN integer value
+    /// </summary>
+    /// <returns>
+    /// The next ISBN available
+    /// </returns>
+    int GetNextIsbn();
+    
+    /// <summary>
     /// Internal repository method to add a new book to the repository
     /// </summary>
     /// <param name="book">The book object to be added to the repository</param>
@@ -26,6 +34,7 @@ public interface IBookRepo
     /// Internal repository method to retrieve a book given the isbn
     /// </summary>
     /// <param name="isbn">The isbn of the book to return</param>
+    /// <exception cref="KeyNotFoundException">Thrown when isbn does not match an existing book</exception>
     /// <returns>The book object matching the inputted isbn</returns>
     Book Get(int isbn);
 }

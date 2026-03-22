@@ -10,6 +10,7 @@ public interface IBookService
     /// <param name="author">The author of the book to add</param>
     /// <param name="title">The title of the book to add</param>
     /// <param name="year">The year of the book to add</param>
+    /// <exception cref="ArgumentException">Thrown when any of the attributes are null</exception>
     void AddBook(string author, string title, string year);
     
     /// <summary>
@@ -20,6 +21,7 @@ public interface IBookService
     /// <param name="title">The title of the book to update</param>
     /// <param name="year">The year of the book to update</param>
     /// <exception cref="ArgumentException">Thrown when the isbn does not match an existing book</exception>
+    /// <exception cref="ArgumentException">Thrown when any of the string attributes are null</exception>
     /// <remarks>
     /// Pre-conditions:
     /// - An book must already exist with the provided isbn
@@ -46,8 +48,9 @@ public interface IBookService
     /// <summary>
     /// A method available to the user to retrieve a book
     /// </summary>
-    /// <param name="isbn"></param>
-    /// <returns>The isbn of the book to retrieve</returns>
+    /// <param name="isbn">The isbn of the book to retrieve</param>
+    /// <exception cref="ArgumentException">Thrown when the isbn does not match an existing book</exception>
+    /// <returns>The book that contains the provided isbn</returns>
     /// <remarks>
     /// Pre-conditions:
     /// - An book must already exist with the provided isbn
