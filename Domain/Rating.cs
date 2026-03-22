@@ -7,8 +7,8 @@ public record Rating
 
     public Rating(int isbn, int ratingVal)
     {
-        if (ratingVal < 1 || ratingVal > 5)
-            throw new ArgumentOutOfRangeException(nameof(ratingVal), "Rating must be between 1 and 5.");
+        if (ratingVal < 0 || ratingVal > 5)
+            throw new ArgumentOutOfRangeException(nameof(ratingVal), "Rating must be between 0 and 5.");
 
         Isbn = isbn;
         RatingVal = ratingVal;

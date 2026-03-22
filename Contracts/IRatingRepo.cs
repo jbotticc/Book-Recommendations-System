@@ -5,6 +5,12 @@ namespace BookRecommendationsSystem.Contracts;
 public interface IRatingRepo
 {
     /// <summary>
+    /// A method to add a new account to the repository
+    /// </summary>
+    /// <param name="account">The id of the new account to add</param>
+    void AddAccount(int account);
+    
+    /// <summary>
     /// Internal repository method that the seeding service uses to add a new rating object to a given users rating list
     /// </summary>
     /// <param name="rating">The record object to be added</param>
@@ -26,7 +32,7 @@ public interface IRatingRepo
     void Delete(int isbn, int account);
     
     /// <summary>
-    /// Internal repository method that the services uses to display all ratings for the logged in user
+    /// Internal repository method that the services uses to display all ratings for a user
     /// </summary>
     /// <param name="account">The account id of the member whose ratings to retrieve</param>
     /// <exception cref="ArgumentException">Thrown if account does not match an existing member</exception>
