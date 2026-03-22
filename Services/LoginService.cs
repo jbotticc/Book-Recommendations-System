@@ -4,18 +4,38 @@ namespace BookRecommendationsSystem.Services;
 
 public class LoginService : ILoginService
 {
+    private readonly IMemberService _memberService;
+    private int _loggedIn;
+
+    public LoginService(IMemberService memberService)
+    {
+        _memberService = memberService;
+        _loggedIn = 0;
+    }
+
     public void LogInUser(int account)
     {
-        throw new NotImplementedException();
+        if (_loggedIn != 0)
+        {
+            throw new InvalidOperationException("A user is already logged in");
+        }
+        
+        _memberService.GetMember(account);
+        _loggedIn = account;
     }
 
     public void LogOutUser()
     {
-        throw new NotImplementedException();
+        if (_loggedIn == 0)
+        {
+            throw new InvalidOperationException("No one is logged in");
+        }
+        
+        _loggedIn = 0;
     }
 
     public int GetLoggedIn()
     {
-        throw new NotImplementedException();
+        return _loggedIn;
     }
 }

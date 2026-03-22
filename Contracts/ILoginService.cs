@@ -6,7 +6,7 @@ public interface ILoginService
     /// Logs in the user given the account number
     /// </summary>
     /// <param name="account">The account number of the user logging in</param>
-    /// <exception cref="ArgumentException">Thrown when the account number does not match an existing user</exception>
+    /// <exception cref="InvalidOperationException">Thrown when the account number does not match an existing user</exception>
     /// <remarks>
     /// Pre-conditions:
     /// - A user must exist with the provided account number
@@ -19,6 +19,7 @@ public interface ILoginService
     /// <summary>
     /// Logs out the currently logged in user
     /// </summary>
+    /// <exception cref="InvalidOperationException">Thrown when no one is logged in</exception>
     void LogOutUser();
 
     /// <summary>
