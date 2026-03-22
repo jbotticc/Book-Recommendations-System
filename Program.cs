@@ -1,5 +1,6 @@
 ﻿using BookRecommendationsSystem.Repositories;
 using BookRecommendationsSystem.Services;
+using BookRecommendationsSystem.Contracts;
 
 
 namespace BookRecommendationsSystem;
@@ -8,17 +9,17 @@ class Program
 {
     static void Main(string[] args)
     {
-        var bookRepository = new BookRepo();
-        var ratingRepository = new RatingRepo();
-        var memberRepository = new MemberRepo();
-        var loginService = new LoginService(memberRepository);
-        var ratingService = new RatingService(loginService, memberRepository, ratingRepository, bookRepository);
-        var memberService = new MemberService(memberRepository, ratingService);
-        var bookService = new BookService(bookRepository, ratingService);
+        IBookRepo bookRepository = new BookRepo();
+        IRatingRepo ratingRepository = new RatingRepo();
+        IMemberRepo memberRepository = new MemberRepo();
+        ILoginService loginService = new LoginService(memberRepository);
+        IRatingService ratingService = new RatingService(loginService, memberRepository, ratingRepository, bookRepository);
+        IMemberService memberService = new MemberService(memberRepository, ratingService);
+        IBookService bookService = new BookService(bookRepository, ratingService);
 
-        var recommendationService = new RecommendationService(ratingService, memberService, bookService, loginService);
-        var seedBooksService = new SeedBooksService(bookService);
-        var seedMembersRatingsService = new SeedMembersRatingsService(ratingService, memberService);
+        IRecommendationService recommendationService = new RecommendationService(ratingService, memberService, bookService, loginService);
+        ISeedService seedBooksService = new SeedBooksService(bookService);
+        ISeedService seedMembersRatingsService = new SeedMembersRatingsService(ratingService, memberService);
 
         Console.WriteLine("Welcome to the Book Recommendations System!");
         while (true)
