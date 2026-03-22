@@ -28,6 +28,10 @@ public interface IMemberRepo
     /// An internal method that MemberService uses to get members
     /// </summary>
     /// <param name="account">The account number of the member to get</param>
+    /// <exception cref="KeyNotFoundException">
+    ///     Thrown when the provided account
+    ///     id does not match an existing account
+    /// </exception>
     /// <returns>
     /// The member object matching the provided account id
     /// </returns>
