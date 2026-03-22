@@ -5,16 +5,18 @@ namespace BookRecommendationsSystem.Contracts;
 public interface IMemberRepo
 {
     /// <summary>
+    /// A method to retrieve the next available account id
+    /// </summary>
+    /// <returns>
+    /// The next available account id
+    /// </returns>
+    int GetNextId();
+    
+    /// <summary>
     /// An internal method that MemberService uses to add members
     /// </summary>
     /// <param name="member">The member object to be added</param>
     void Add(Member member);
-    
-    /// <summary>
-    /// An internal method that MemberService uses to update members
-    /// </summary>
-    /// <param name="member">The member object to replace the existing member with the same id</param>
-    void Update(Member member);
     
     /// <summary>
     /// An internal method that MemberService uses to delete members

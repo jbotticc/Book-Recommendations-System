@@ -8,6 +8,7 @@ public interface IMemberService
     /// A method available to the user to add a new member
     /// </summary>
     /// <param name="name">The name of the member being added</param>
+    /// <exception cref="ArgumentException">Thrown when the name is null or empty</exception>
     void AddMember(string name);
     
     /// <summary>

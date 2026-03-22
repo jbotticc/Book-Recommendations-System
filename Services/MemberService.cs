@@ -5,23 +5,44 @@ namespace BookRecommendationsSystem.Services;
 
 public class MemberService : IMemberService
 {
+    private readonly IMemberRepo _memberRepo;
+
+    public MemberService(IMemberRepo memberRepo)
+    {
+        _memberRepo = memberRepo;
+    }
+    
     public void AddMember(string name)
     {
-        throw new NotImplementedException();
+        if (string.IsNullOrWhiteSpace(name))
+        {
+            throw new ArgumentException("Member name cannot be null or empty");
+        }
+
+        int id = _memberRepo.GetNextId();
+        Member member = new Member(name, id);
+        _memberRepo.Add(member);
     }
 
     public void UpdateMember(int account, string name)
     {
-        throw new NotImplementedException();
+        if (string.IsNullOrWhiteSpace(name))
+        {
+            throw new ArgumentException("Member name cannot be null or empty");
+        }
+        
+        Member member = _memberRepo.Get(account);
+        member.SetName(name);
     }
 
     public void DeleteMember(int account)
     {
-        throw new NotImplementedException();
+        _memberRepo.Get(account);
+        _memberRepo.Delete(account);
     }
 
     public Member GetMember(int account)
     {
-        throw new NotImplementedException();
+        return _memberRepo.Get(account);
     }
 }
