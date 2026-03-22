@@ -16,7 +16,8 @@ public interface IMemberService
     /// </summary>
     /// <param name="account">The account id of the member being updated</param>
     /// <param name="name">The new name of the member being updated</param>
-    /// <exception cref="ArgumentException">Thrown when the provided account id does not match a user</exception>
+    /// <exception cref="ArgumentException">Thrown when the provided name is null or empty</exception>
+    /// <exception cref="KeyNotFoundException">Thrown when the provided account id does not match an existing member</exception>
     /// <remarks>
     /// Pre-conditions:
     /// - A user with the provided account id must exist
@@ -30,6 +31,7 @@ public interface IMemberService
     /// A method available to the user to delete an existing member
     /// </summary>
     /// <param name="account">The account id of the member to delete</param>
+    /// <exception cref="KeyNotFoundException">Thrown when the provided account id does not match an existing member</exception>
     /// <remarks>
     /// Pre-conditions:
     /// - A user with the provided account id must exist
@@ -43,6 +45,7 @@ public interface IMemberService
     /// A method available to the user to retrieve a member
     /// </summary>
     /// <param name="account">The account id of the member to retrieve</param>
+    /// <exception cref="KeyNotFoundException">Thrown when the provided account id does not match an existing member</exception>
     /// <returns>
     /// A member object
     /// </returns>
@@ -54,4 +57,16 @@ public interface IMemberService
     /// - The member object with the provided account id is returned
     /// </remarks>
     Member GetMember(int account);
+
+    /// <summary>
+    /// A method to retrieve the number of members
+    /// </summary>
+    /// <returns>
+    /// The number of members
+    /// </returns>
+    /// <remarks>
+    /// Post-conditions:
+    /// - The number of members is returned
+    /// </remarks>
+    int GetMemberCount();
 }

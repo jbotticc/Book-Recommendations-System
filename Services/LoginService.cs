@@ -4,12 +4,12 @@ namespace BookRecommendationsSystem.Services;
 
 public class LoginService : ILoginService
 {
-    private readonly IMemberService _memberService;
+    private readonly IMemberRepo _memberRepo;
     private int _loggedIn;
 
-    public LoginService(IMemberService memberService)
+    public LoginService(IMemberRepo memberRepo)
     {
-        _memberService = memberService;
+        _memberRepo = memberRepo;
         _loggedIn = 0;
     }
 
@@ -20,7 +20,7 @@ public class LoginService : ILoginService
             throw new InvalidOperationException("A user is already logged in");
         }
         
-        _memberService.GetMember(account);
+        _memberRepo.Get(account);
         _loggedIn = account;
     }
 

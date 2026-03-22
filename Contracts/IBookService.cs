@@ -21,6 +21,7 @@ public interface IBookService
     /// <param name="title">The title of the book to update</param>
     /// <param name="year">The year of the book to update</param>
     /// <exception cref="ArgumentException">Thrown when any of the string attributes are null</exception>
+    /// <exception cref="KeyNotFoundException">Thrown when the provided isbn does not match an existing book</exception>
     /// <remarks>
     /// Pre-conditions:
     /// - An book must already exist with the provided isbn
@@ -34,6 +35,7 @@ public interface IBookService
     /// A method available to the user to delete a book
     /// </summary>
     /// <param name="isbn">The isbn of the book to delete</param>
+    /// <exception cref="KeyNotFoundException">Thrown when the provided isbn does not match an existing book</exception>
     /// <remarks>
     /// Pre-conditions:
     /// - An book must already exist with the provided isbn
@@ -47,6 +49,7 @@ public interface IBookService
     /// A method available to the user to retrieve a book
     /// </summary>
     /// <param name="isbn">The isbn of the book to retrieve</param>
+    /// <exception cref="KeyNotFoundException">Thrown when the provided isbn does not match an existing book</exception>
     /// <returns>The book that contains the provided isbn</returns>
     /// <remarks>
     /// Pre-conditions:
@@ -56,4 +59,16 @@ public interface IBookService
     /// - The book with the provided isbn is returned
     /// </remarks>
     Book GetBook(int isbn);
+
+    /// <summary>
+    /// A method to retrieve the number of books
+    /// </summary>
+    /// <returns>
+    /// The number of books
+    /// </returns>
+    /// <remarks>
+    /// Post-conditions:
+    /// - The number of books is returned
+    /// </remarks>
+    int GetBookCount();
 }

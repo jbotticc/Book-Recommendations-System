@@ -26,11 +26,16 @@ public class RatingRepo : IRatingRepo
     public void Delete(int isbn, int account)
     {
         Rating rating = new Rating(isbn, 0);
-        _ratings[account][isbn] = rating;
+        _ratings[account][isbn - 1] = rating;
     }
     
     public List<Rating> Get(int account)
     {
         return _ratings[account];
+    }
+
+    public int GetRating(int account, int isbn)
+    {
+        return _ratings[account][isbn - 1].RatingVal;
     }
 }

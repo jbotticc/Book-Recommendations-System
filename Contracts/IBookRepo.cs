@@ -37,4 +37,16 @@ public interface IBookRepo
     /// <exception cref="KeyNotFoundException">Thrown when isbn does not match an existing book</exception>
     /// <returns>The book object matching the inputted isbn</returns>
     Book Get(int isbn);
+
+    /// <summary>
+    /// A method to return the number of books
+    /// </summary>
+    /// <returns>
+    /// The number of books
+    /// </returns>
+    /// <remarks>
+    /// Post-conditions:
+    /// - The number of books is returned
+    /// </remarks>
+    int GetBookCount();
 }

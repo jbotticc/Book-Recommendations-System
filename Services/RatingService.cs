@@ -31,31 +31,17 @@ public class RatingService : IRatingService
         _ratingRepo.Add(rating, account);
     }   
     
-    public void UpdateRating(int isbn, int rating)
+    public void UpdateRating(int account, int isbn, int rating)
     {
         _bookRepo.Get(isbn);
-        if (rating is < 0 or > 5)
-        {
-            throw new ArgumentException("Rating must be between 0 and 5");
-        }
-        int account = _loginService.GetLoggedIn();
-        if (account == 0)
-        {
-            throw new InvalidOperationException("No user is currently logged in.");
-        }
        
         Rating newRating = new Rating(isbn, rating);
         _ratingRepo.Update(newRating, account);
     }
 
-    public void DeleteRating(int isbn)
+    public void DeleteRating(int account, int isbn)
     {
         _bookRepo.Get(isbn);
-        int account = _loginService.GetLoggedIn();
-        if (account == 0)
-        {
-            throw new InvalidOperationException("No user is currently logged in.");
-        }
         _ratingRepo.Delete(isbn, account);
     }
 
@@ -73,5 +59,10 @@ public class RatingService : IRatingService
             throw new InvalidOperationException("No user is currently logged in.");
         }
         return _ratingRepo.Get(account);
+    }
+
+    public int GetRating(int account, int isbn)
+    {
+        return _ratingRepo.GetRating(account, isbn);
     }
 }

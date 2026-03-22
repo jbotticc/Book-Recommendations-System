@@ -36,6 +36,16 @@ public interface IMemberRepo
     /// The member object matching the provided account id
     /// </returns>
     Member Get(int account);
-    
-    
+
+    /// <summary>
+    /// A method to return the number of members
+    /// </summary>
+    /// <returns>
+    /// The number of members
+    /// </returns>
+    /// <remarks>
+    /// Post-conditions:
+    /// - The number of members is returned
+    /// </remarks>
+    int GetMemberCount();    
 }

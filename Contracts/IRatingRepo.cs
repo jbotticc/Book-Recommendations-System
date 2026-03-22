@@ -35,9 +35,21 @@ public interface IRatingRepo
     /// Internal repository method that the services uses to display all ratings for a user
     /// </summary>
     /// <param name="account">The account id of the member whose ratings to retrieve</param>
-    /// <exception cref="ArgumentException">Thrown if account does not match an existing member</exception>
+    /// <exception cref="KeyNotFoundException">Thrown if account does not match an existing member</exception>
     /// <returns>
     /// A list of rating objects
     /// </returns>
     List<Rating> Get(int account);
+
+    /// <summary>
+    /// Internal repository method that the services uses to get a specific rating
+    /// </summary>
+    /// <param name="account">The account id of the member whose rating to retrieve</param>
+    /// <param name="isbn">The isbn of the book whose rating to retrieve</param>
+    /// <exception cref="KeyNotFoundException">Thrown if account does not match an existing member</exception>
+    /// <exception cref="ArgumentOutOfRangeException">Thrown if the isbn does not match an existing book</exception>
+    /// <returns>
+    /// The rating value
+    /// </returns>
+    int GetRating(int account, int isbn);
 }

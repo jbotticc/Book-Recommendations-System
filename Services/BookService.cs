@@ -6,10 +6,12 @@ namespace BookRecommendationsSystem.Services;
 public class BookService : IBookService
 {
     private readonly IBookRepo _bookRepo;
+    private readonly IRatingService _ratingService;
 
-    public BookService(IBookRepo bookRepo)
+    public BookService(IBookRepo bookRepo, IRatingService ratingService)
     {
         _bookRepo = bookRepo;
+        _ratingService = ratingService;
     }
     
     public void AddBook(string author, string title, string year)
@@ -22,6 +24,21 @@ public class BookService : IBookService
         int isbn = _bookRepo.GetNextIsbn();
         Book book = new Book(author, title, year, isbn);
         _bookRepo.Add(book);
+        // Add default rating entry of 0 for all members
+        int member = 1;
+        while (member != -1)
+        {
+            try
+            {
+                _ratingService.AddRating(member, isbn);
+                member++;
+            }
+            catch (KeyNotFoundException)
+            {
+                member = -1;
+            }
+            
+        }
     }
 
     public void UpdateBook(int isbn, string author, string title, string year)
@@ -45,5 +62,10 @@ public class BookService : IBookService
     public Book GetBook(int isbn)
     {
         return _bookRepo.Get(isbn);
+    }
+
+    public int GetBookCount()
+    {
+        return _bookRepo.GetBookCount();
     }
 }

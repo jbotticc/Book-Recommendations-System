@@ -12,6 +12,11 @@ public class BookRepo : IBookRepo
     {
         return _nextIsbn++;
     }
+
+    public int GetIsbn()
+    {
+        return _nextIsbn;
+    }
     
     public void Add(Book book)
     {
@@ -35,5 +40,10 @@ public class BookRepo : IBookRepo
             throw new KeyNotFoundException($"Book with ISBN {isbn} not found");
         }
         return book;
+    }
+
+    public int GetBookCount()
+    {
+        return _books.Count;
     }
 }

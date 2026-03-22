@@ -31,4 +31,9 @@ public class MemberRepo : IMemberRepo
         }
         return member;
     }
+
+    public int GetMemberCount()
+    {
+        return _members.Count;
+    }
 }
