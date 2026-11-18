@@ -116,4 +116,4 @@ The use of interfaces and constructor-based dependency injection allows componen
 
 ## Author
 
-[JJ Botticchio](https://github.com/jbotticc)
+[JJ Botticchio](https://github.com/jbotticc), [Tanner Gleason](https://github.com/TannerG111)
